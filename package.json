@@ -1,0 +1,19 @@
+{
+	"name": "wgn",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "node index.js",
+		"build": "node build.js",
+		"make:exe": "node --experimental-sea-config sea-config.json"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@playwright/test": "^1.50.1",
+		"@types/node": "^22.13.1"
+	}
+}

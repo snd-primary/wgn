@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+
+		<meta
+			id="sounddef"
+			soundname="sound1"
+			isiterate="1"
+			iterationcount="2"
+			playtiming="3000"
+		/>
+
+		<link rel="stylesheet" href="./css/index.css" />
+		<title>モダンログインフォーム</title>
+	</head>
+	<body>
+		<div class="login-container">
+			<div class="login-header">
+				<h1>ようこそ</h1>
+				<p>アカウントにログインしてください</p>
+			</div>
+			<form>
+				<div class="form-group">
+					<input type="email" id="email" required />
+					<label for="email">メールアドレス</label>
+				</div>
+				<div class="form-group">
+					<input type="password" id="password" required />
+					<label for="password">パスワード</label>
+				</div>
+				<div class="remember-forgot">
+					<label class="remember-me">
+						<input type="checkbox" />
+						<span>ログイン情報を保存</span>
+					</label>
+					<a href="#" class="forgot-password">パスワードをお忘れですか？</a>
+				</div>
+				<button type="submit" class="login-button">ログイン</button>
+			</form>
+			<div class="social-login">
+				<p>またはソーシャルメディアでログイン</p>
+				<div class="social-icons">
+					<div class="social-icon">
+						<img src="/api/placeholder/20/20" alt="Google" />
+					</div>
+					<div class="social-icon">
+						<img src="/api/placeholder/20/20" alt="Facebook" />
+					</div>
+					<div class="social-icon">
+						<img src="/api/placeholder/20/20" alt="Twitter" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
