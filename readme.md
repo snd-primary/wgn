@@ -174,3 +174,8 @@ npm run make:exe
 node make-exe.js
 
 # 実行
+
+{
+"main": "./dist/bundle.js",
+"output": "./dist/sea-prep.blob"
+}
