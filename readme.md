@@ -1,6 +1,113 @@
 ## 要件(概要)
 
 HTML の画面を解析し、その結果を画面設計書として Excel に出力するツール。
+HTML 画面のスタイルや DOM の構造を JSON として出力して、それを VBA で読み込み、エクセルシートを生成するようなアプリ。
+
+### HTML 解析処理
+
+- HTML の解析は Playwright(node.js)で処理
+- 解析結果を JSON ファイルで保存（画面ごとに）
+
+### 画面設計書生成処理
+
+- JSON ファイルを Excel（VBA）で読み込み
+- あらかじめレイアウトを定義しておいたテンプレートシートをコピーして、書き込み処理を行う。
+
+## 用いる技術
+
+- JSON-VBA(OSS ツール)
+
+## Task1:HTML 解析処理の作成
+
+**Goal**
+
+- 一連の処理が問題なく動くことを確認
+- 処理が完成したら、これを exe 化する。esbuild でバンドルして、Nodejs の SingleExecutableApplication 機能を使って exe 化する
+
+**npm パッケージ**
+
+- npm
+- playwright
+- http-server
+
+**規則**
+
+- コードの記述は、vanilla javascript
+- 可能な限り ESModules で実装
+- 開発は Windows11 で行う。
+
+### 解析対象の HTML をホスティング
+
+npm パッケージの http-server を用いて、解析対象の HTML を http://localhost:3000 でホスティングします。
+これを Playwright に解析させます。
+
+### playwright による HTML 解析
+
+- playwright 用のブラウザはシステムの Edge を使う
+
+出力する JSON は、スキーマを持ちます。
+
+```json
+{
+	"meta": {
+		"画面タイトル": ""
+	},
+	"sheets": {
+		"styleSheets": {
+			"1": "./css/hoge.css",
+			"2": "./css/huga.css"
+		},
+		"scripts": {
+			"1": "./js/huga.js"
+		}
+	},
+	"sounds": {
+		"ID名": "",
+		"サウンド名": "",
+		"繰り返し有無": "",
+		"繰返間隔": "",
+		"再生タイミング": ""
+	},
+	"elements": [
+		//<body>配下のhtml要素データを、オブジェクトの配列として格納
+		{
+			"タグ": "div", //タグ名
+			"深さ": "1", //body タグが1, 深くなるごとに1づつ数値が上がる
+			"属性": {
+				"ID属性": {
+					//class, id以外の属性
+					"hoge": "hoge",
+					"hoge": "huga"
+				},
+				"その他属性": {
+					//class, id以外の属性
+					"data-hoge": "hoge",
+					"data-huga": "huga"
+				},
+				"クラス名": "font-9, base-layout" //カンマ区切り
+			},
+			"スタイル": {
+				//出力するスタイル情報は以下のプロパティのみ。
+				"font-size": "", //font-size
+				"color": "", //color
+				"display": "", //display
+				"position": "" //position
+		,
+			"位置": {
+				"x": "",
+				"y": ""
+			},
+			"サイズ": {
+				"width": "",
+				"height": ""
+			}
+		}
+	],
+	"subdisplay": {
+		"画面名": ""
+	}
+}
+```
 
 ## アプリの構成
 
@@ -60,18 +167,18 @@ HTML の解析は、以下の出力になる。
 			},
 			"スタイル": {
 				//出力するスタイル情報は以下のプロパティのみ。
-				"文字サイズ": "", //font-size
-				"文字色": "", //color
-				"ディスプレイ": "", //display
-				"ポジション": "" //position
+				"font-size": "", //font-size
+				"color": "", //color
+				"display": "", //display
+				"position": "" //position
 		,
 			"位置": {
 				"x": "",
 				"y": ""
 			},
 			"サイズ": {
-				"横幅": "",
-				"高さ": ""
+				"width": "",
+				"height": ""
 			}
 		}
 	],
