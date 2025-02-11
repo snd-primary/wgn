@@ -6,8 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"host": "npx http-server C:\\Users\\sndwe\\prac\\samples -p 3000",
-		"analyze:dev": "cross-env NODE_ENV=development node src/main.js",
-		"build": "node scripts/build.js",
+		"analyze:dev": "cross-env NODE_ENV=development node src/main.mjs",
+		"build": "node scripts/build.mjs",
 		"clean": "node --clean-sea-config",
 		"make-exe": "node scripts/make-exe.js",
 		"serve": "node scripts/run-server.js",
@@ -32,7 +32,6 @@
 	},
 	"dependencies": {
 		"cross-env": "^7.0.3",
-		"http-server": "^14.1.1",
-		"pkg": "^5.8.1"
+		"http-server": "^14.1.1"
 	}
 }
