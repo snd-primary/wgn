@@ -5,9 +5,12 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"start": "node index.js",
+		"host": "npx http-server C:\\Users\\sndwe\\prac\\samples -p 3000",
+		"analyze:dev": "cross-env NODE_ENV=development node src/main.js",
 		"build": "node build.js",
-		"make:exe": "node --experimental-sea-config sea-config.json"
+		"make-exe": "node scripts/make-exe.js",
+		"serve": "node scripts/run-server.js",
+		"serve:dev": "cross-env NODE_ENV=development node scripts/run-server.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -15,5 +18,9 @@
 	"devDependencies": {
 		"@playwright/test": "^1.50.1",
 		"@types/node": "^22.13.1"
+	},
+	"dependencies": {
+		"cross-env": "^7.0.3",
+		"http-server": "^14.1.1"
 	}
 }
