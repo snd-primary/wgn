@@ -286,3 +286,6 @@ node make-exe.js
 "main": "./dist/bundle.js",
 "output": "./dist/sea-prep.blob"
 }
+
+exe ビルド前のキャッシュ削除
+node --clean-sea-config

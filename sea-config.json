@@ -1,4 +1,5 @@
 {
 	"main": "dist/main.js",
-	"output": "dist/app.blob"
+	"output": "dist/app.blob",
+	"disableExperimentalSEAWarning": true
 }

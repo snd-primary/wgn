@@ -11,6 +11,8 @@ async function runAnalysis() {
 	const analyzer = new PageAnalyzer();
 	const outputDir = "./output";
 
+	console.log("Startup args:", process.argv); // デバッグ用
+
 	// 出力ディレクトリが存在しない場合は作成
 	try {
 		await mkdir(outputDir, { recursive: true });
@@ -22,6 +24,8 @@ async function runAnalysis() {
 
 	// 開発モードの場合はデフォルトパスを使用
 	const directoryPath = DEV_MODE ? DEFAULT_PATH : process.argv[2];
+
+	console.log("Processing directory:", directoryPath);
 
 	if (!directoryPath) {
 		console.error("Error: Please provide a path to the directory");
@@ -86,6 +90,7 @@ async function runAnalysis() {
 				//サマリーの表示
 				console.log("\nAnalysis Summary:");
 				console.log(`- Page Title: ${analysis.pageInfo.title}`);
+				console.log("Build version: " + new Date().toISOString());
 			} catch (error) {
 				console.error(`Error during analysis of ${targetUrl}`, error);
 			}

@@ -7,20 +7,32 @@
 	"scripts": {
 		"host": "npx http-server C:\\Users\\sndwe\\prac\\samples -p 3000",
 		"analyze:dev": "cross-env NODE_ENV=development node src/main.js",
-		"build": "node build.js",
+		"build": "node scripts/build.js",
+		"clean": "node --clean-sea-config",
 		"make-exe": "node scripts/make-exe.js",
 		"serve": "node scripts/run-server.js",
-		"serve:dev": "cross-env NODE_ENV=development node scripts/run-server.js"
+		"serve:dev": "cross-env NODE_ENV=development node scripts/run-server.js",
+		"pkg": "npx pkg ."
+	},
+	"bin": "dist/main.js",
+	"pkg": {
+		"targets": [
+			"node18-win-x64"
+		],
+		"outputPath": "dist"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"@playwright/test": "^1.50.1",
-		"@types/node": "^22.13.1"
+		"@types/node": "^22.13.1",
+		"postject": "1.0.0-alpha.6",
+		"rimraf": "^6.0.1"
 	},
 	"dependencies": {
 		"cross-env": "^7.0.3",
-		"http-server": "^14.1.1"
+		"http-server": "^14.1.1",
+		"pkg": "^5.8.1"
 	}
 }
